@@ -1,0 +1,29 @@
+baseURL = "https://example.com/"
+title = "Leo's Blog"
+defaultContentLanguage = "zh-cn"
+defaultContentLanguageInSubdir = false
+hasCJKLanguage = true
+enableRobotsTXT = true
+
+[pagination]
+pagerSize = 5
+
+[outputs]
+home = ["HTML", "RSS"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+term = ["HTML", "RSS"]
+
+[permalinks]
+post = "/p/:slug/"
+page = "/:slug/"
+
+[markup]
+[markup.highlight]
+noClasses = false
+[markup.goldmark.renderer]
+unsafe = true
+
+[taxonomies]
+tag = "tags"
+category = "categories"

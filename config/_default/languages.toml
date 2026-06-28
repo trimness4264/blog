@@ -1,0 +1,83 @@
+[zh-cn]
+label = "中文"
+locale = "zh-cn"
+contentDir = "content/zh"
+weight = 1
+title = "Leo's Blog"
+
+[zh-cn.params]
+description = "一个使用 Hugo、Stack Theme 和 Cloudflare Pages 构建的双语博客。"
+
+[[zh-cn.menus.main]]
+identifier = "home"
+name = "首页"
+url = "/"
+weight = 10
+[zh-cn.menus.main.params]
+icon = "home"
+
+[[zh-cn.menus.main]]
+identifier = "archives"
+name = "归档"
+url = "/archives/"
+weight = 20
+[zh-cn.menus.main.params]
+icon = "archives"
+
+[[zh-cn.menus.main]]
+identifier = "search"
+name = "搜索"
+url = "/search/"
+weight = 30
+[zh-cn.menus.main.params]
+icon = "search"
+
+[[zh-cn.menus.main]]
+identifier = "about"
+name = "关于"
+url = "/about/"
+weight = 40
+[zh-cn.menus.main.params]
+icon = "user"
+
+[en]
+label = "English"
+locale = "en-us"
+contentDir = "content/en"
+weight = 2
+title = "Leo's Blog"
+
+[en.params]
+description = "A bilingual blog built with Hugo, Stack Theme, and Cloudflare Pages."
+
+[[en.menus.main]]
+identifier = "home"
+name = "Home"
+url = "/en/"
+weight = 10
+[en.menus.main.params]
+icon = "home"
+
+[[en.menus.main]]
+identifier = "archives"
+name = "Archives"
+url = "/en/archives/"
+weight = 20
+[en.menus.main.params]
+icon = "archives"
+
+[[en.menus.main]]
+identifier = "search"
+name = "Search"
+url = "/en/search/"
+weight = 30
+[en.menus.main.params]
+icon = "search"
+
+[[en.menus.main]]
+identifier = "about"
+name = "About"
+url = "/en/about/"
+weight = 40
+[en.menus.main.params]
+icon = "user"
