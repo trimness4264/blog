@@ -6,7 +6,7 @@ weight = 1
 title = "Leo's Blog"
 
 [zh-cn.params]
-description = "一个使用 Hugo、Stack Theme 和 Cloudflare Pages 构建的双语博客。"
+description = "。。。"
 
 [[zh-cn.menus.main]]
 identifier = "home"
@@ -48,7 +48,7 @@ weight = 2
 title = "Leo's Blog"
 
 [en.params]
-description = "A bilingual blog built with Hugo, Stack Theme, and Cloudflare Pages."
+description = "To be continued..."
 
 [[en.menus.main]]
 identifier = "home"

@@ -1,6 +1,10 @@
 +++
 date = '2026-06-27T21:56:42+08:00'
 title = '我的HomeLab基础配置'
+description = '分享一些折腾家庭服务器过程中的心得与感想'
+slug="homelab-base"
+categories=["技术"]
+tags= ["Mac","Linux","HomeLab"]
 +++
 
 不知不觉间，距离我第一次接触 Linux Server 已经过去了六年，而开始折腾自己的 HomeLab 也已经快两年了。这些年踩过不少坑，也积累了一些经验，因此想借这篇文章，把这段折腾历程记录下来，顺便和同样对自托管感兴趣的朋友分享一下。
