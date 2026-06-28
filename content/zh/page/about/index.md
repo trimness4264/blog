@@ -5,7 +5,16 @@ slug: "about"
 translationKey: "about"
 draft: false
 ---
-
-这里是关于页面。
-
-你可以在这里介绍自己、这个博客的主题，以及读者可以期待的内容。
+# 关于我
+生活:
+- 高中生
+- Arch BTW
+- 想学计算机专业
+游戏:
+- CS2
+- HITMAN
+- GTA
+- PERSONA
+- ...
+# 关于本站
+基于 Hugo 构建，使用 `hugo-theme-stack` 主题，托管在Cloudflare。

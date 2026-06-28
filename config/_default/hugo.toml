@@ -1,6 +1,6 @@
 baseURL = "https://example.com/"
 title = "Leo's Blog"
-defaultContentLanguage = "zh-cn"
+defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = false
 hasCJKLanguage = true
 enableRobotsTXT = true

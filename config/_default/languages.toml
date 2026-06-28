@@ -1,43 +1,43 @@
-[zh-cn]
+[zh]
 label = "中文"
-locale = "zh-cn"
+locale = "zh-CN"
 contentDir = "content/zh"
 weight = 1
 title = "Leo's Blog"
 
-[zh-cn.params]
+[zh.params]
 description = "。。。"
 
-[[zh-cn.menus.main]]
+[[zh.menus.main]]
 identifier = "home"
 name = "首页"
 url = "/"
 weight = 10
-[zh-cn.menus.main.params]
+[zh.menus.main.params]
 icon = "home"
 
-[[zh-cn.menus.main]]
+[[zh.menus.main]]
 identifier = "archives"
 name = "归档"
 url = "/archives/"
 weight = 20
-[zh-cn.menus.main.params]
+[zh.menus.main.params]
 icon = "archives"
 
-[[zh-cn.menus.main]]
+[[zh.menus.main]]
 identifier = "search"
 name = "搜索"
 url = "/search/"
 weight = 30
-[zh-cn.menus.main.params]
+[zh.menus.main.params]
 icon = "search"
 
-[[zh-cn.menus.main]]
+[[zh.menus.main]]
 identifier = "about"
 name = "关于"
 url = "/about/"
 weight = 40
-[zh-cn.menus.main.params]
+[zh.menus.main.params]
 icon = "user"
 
 [en]

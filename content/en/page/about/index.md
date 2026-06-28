@@ -6,6 +6,22 @@ translationKey: "about"
 draft: false
 ---
 
-This is the about page.
+# About Me
 
-Use it to introduce yourself, the focus of the blog, and what readers can expect here.
+Life:
+
+- High school student
+- Arch BTW
+- Planning to study computer science
+
+Games:
+
+- CS2
+- HITMAN
+- GTA
+- PERSONA
+- ...
+
+# About This Site
+
+Built with Hugo, using the `hugo-theme-stack` theme, and hosted on Cloudflare.
