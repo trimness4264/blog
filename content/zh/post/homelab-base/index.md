@@ -1,6 +1,5 @@
 +++
 date = '2026-06-27T21:56:42+08:00'
-draft = true
 title = '我的HomeLab基础配置'
 +++
 
