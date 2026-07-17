@@ -10,7 +10,7 @@ title = 'How I jailbreak my iPad 6th generation with palera1n using archlinux'
 - A computer with intel or apple silicon chips installed `Linux/macOS`.
 - A USB-A to lightning cable to connect PC and iPad
 
-I've tried to use palera1n with my 9800x3d amd pc but finally failed, and the official docs refers to it. See [this issue] (https://github.com/palera1n/palera1n/issues/694) for detailed information.
+I've tried to use palera1n with my 9800x3d amd pc but finally failed, and the official docs refers to it. See [this issue](https://github.com/palera1n/palera1n/issues/694) for detailed information.
 My environment is a iPad 2018 128G storage version has a `iPadOS 17.7.10` with a Thinkpad T14P which uses arch btw.
 
 # Tips
