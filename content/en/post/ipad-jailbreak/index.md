@@ -22,8 +22,8 @@ Jailbreaks may break some features and even turn your device into a brick. PLEAS
 First, ensure you have a linux environment. If not, you can view [this article](https://blog.itshenryz.com/2023/01/31/palera1n-win-without-usb) to build a temporary Ubuntu GNU/Linux OS on the base of Windows in an easy way.
 If you have been a linux user, you can keep reading this article.
 
-```bash sudo /bin/sh -c "$(curl -fsSL https://static.palera.in/scripts/install.sh)"
-
+```bash
+sudo /bin/sh -c "$(curl -fsSL https://static.palera.in/scripts/install.sh)"
 ```
 
 After installation, run these following commands to restart usbmuxd
