@@ -1,0 +1,234 @@
+@use "sass:math";
+
+$phi: 1.61803398875;
+$ratio: math.pow($phi, math.div(1, 4));
+$base-size: $ratio * 1rem;
+
+%wide-block {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-content {
+  font-size: $base-size;
+  line-height: $phi;
+  color: var(--herm-foreground);
+  max-width: 100%;
+
+  > :first-child {
+    margin-block-start: 0;
+  }
+  > :last-child {
+    margin-block-end: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-block: 1.5em 0.5em;
+    color: inherit;
+    line-height: 1.25;
+    font-weight: 500;
+  }
+
+  @for $i from 1 through 6 {
+    h#{$i} {
+      font-size: math.pow($ratio, 6 - $i) * $base-size;
+    }
+  }
+
+  h2 {
+    padding-block-end: 0.375em;
+    border-bottom: 1px solid var(--herm-border);
+    margin-block-start: 2em;
+  }
+
+  p {
+    margin-block: 1.2em;
+  }
+
+  // inline styles
+  strong {
+    color: inherit;
+  }
+
+  del {
+    color: var(--herm-muted-foreground);
+  }
+
+  a {
+    color: var(--herm-primary);
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-word;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--herm-primary-hovered);
+    }
+  }
+
+  code {
+    -webkit-user-select: all;
+    user-select: all;
+    color: inherit;
+    font-family: var(--herm-font-mono);
+    font-weight: normal;
+    font-size: 0.95em;
+  }
+
+  // special blocks
+
+  hr {
+    $mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 19.1%,
+      black 80.9%,
+      transparent
+    );
+
+    border: none;
+    height: 1px;
+    background-color: var(--herm-border);
+    margin-block: 3em;
+    mask-image: $mask-image;
+    -webkit-mask-image: $mask-image;
+  }
+
+  blockquote {
+    margin-block: 1.5em;
+    padding-left: 1rem;
+    border-left: 0.2rem solid var(--herm-border);
+    font-family: var(--herm-font-kai);
+    color: var(--herm-muted-foreground);
+  }
+
+  // list
+  ul,
+  ol {
+    list-style: revert;
+    padding-inline-start: 1.625em;
+    margin-block: 1.25em;
+
+    // reduce margin-block when nesting lists
+    ul,
+    ol {
+      margin-block: 0.5em;
+    }
+
+    li::marker {
+      color: var(--herm-muted-foreground);
+    }
+  }
+
+  li {
+    padding-inline-start: 0.375em;
+    margin-block: 0.5em;
+  }
+
+  // code block
+  pre {
+    -webkit-user-select: all;
+    user-select: all;
+    display: block;
+    padding: 1em;
+    overflow-x: auto;
+    border-radius: 0.5rem;
+    font-size: 0.95em;
+
+    code {
+      font-size: 1em;
+      white-space: pre;
+    }
+  }
+
+  // image
+  figure {
+    margin-inline: auto;
+    margin-block: 2rem;
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin-inline: auto;
+      margin-block: 1rem;
+      border-radius: 0.5rem;
+      cursor: zoom-in;
+      transition: opacity 0.15s var(--herm-ease-std);
+
+      &:hover {
+        opacity: 0.95;
+      }
+    }
+
+    & > figcaption {
+      font-size: var(--herm-text-sm);
+      color: var(--herm-muted-foreground);
+      text-align: center;
+    }
+  }
+
+  // table
+  table {
+    @extend %wide-block;
+    display: block;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-block: 2em;
+
+    font-variant-numeric: tabular-nums;
+  }
+
+  th,
+  td {
+    padding: 0.75em;
+    border-bottom: 1px solid var(--herm-border);
+
+    color: var(--herm-foreground);
+    text-align: start;
+  }
+
+  tbody {
+    tr {
+      transition: background-color 0.2s var(--herm-ease-std);
+
+      &:hover {
+        background-color: color-mix(
+          in oklch,
+          var(--herm-muted) 70%,
+          transparent
+        );
+      }
+
+      &:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .math-block {
+    @extend %wide-block;
+    max-width: calc(100% + 2rem);
+  }
+
+  .sidenote {
+    color: var(--herm-muted-foreground);
+    font-size: 0.85rem;
+
+    .sidenote-label {
+      font-variant-caps: all-petite-caps;
+      font-feature-settings:
+        "pcap" 1,
+        "onum" 1;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-right: 0.25rem;
+    }
+  }
+}

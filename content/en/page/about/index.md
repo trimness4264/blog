@@ -24,4 +24,4 @@ Games:
 
 # About This Site
 
-Built with Hugo, using the `hugo-theme-stack` theme, and hosted on Cloudflare.
+Built with Hugo, using the `Hermeneutics` theme, and hosted on Cloudflare.

@@ -1,0 +1,40 @@
+<section class="hero-section" aria-label="Introduction">
+  <header>
+    <div class="hero-intro">
+      <h1 class="default-title" data-animate="cinematic-reveal">
+        {{- site.Params.author.hello -}}
+      </h1>
+      <ul class="hero-tags">
+        {{- with site.Params.author.tags -}}
+          {{- range $index, $tag := . -}}
+            <li
+              data-animate="fade-up"
+              style="--anim-delay: {{- add 0.5 (mul $index 0.1) -}}s"
+            >
+              {{- $tag -}}
+            </li>
+          {{- end -}}
+        {{- end -}}
+      </ul>
+      {{- with site.Params.author.bio -}}
+        <p class="hero-bio" data-animate="fade-up" style="--anim-delay: 0.8s">
+          {{- . -}}
+        </p>
+      {{- end -}}
+      {{- partial "home/social.html" . -}}
+    </div>
+    <figure
+      class="hero-avatar"
+      data-animate="fade-left"
+      style="--anim-delay: 0.6s"
+    >
+      <img
+        src="{{- site.Params.author.avatar -}}"
+        alt="avatar of {{- site.Params.author.name -}}"
+        width="256"
+        height="256"
+        fetchpriority="high"
+      />
+    </figure>
+  </header>
+</section>

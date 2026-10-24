@@ -1,0 +1,34 @@
+<header>
+  <a rel="me" href="/" class="header-logo" aria-label="Home">
+    <img fetchpriority="high" src="/favicon.svg" alt="logo" />
+  </a>
+  <nav aria-label="Main navigation">
+    <ul class="header-nav">
+      {{- range site.Menus.main -}}
+        <li>
+          <a aria-label="Menu {{ .Name }}" href="{{ .URL | absURL }}"
+            >{{ .Name }}</a
+          >
+        </li>
+      {{- end -}}
+    </ul>
+  </nav>
+  <button
+    id="theme-button"
+    class="header-btn js-only"
+    type="button"
+    aria-label="Switch theme"
+  >
+    <i aria-hidden="true" class="small-icon i-sun icon-light"></i>
+    <i aria-hidden="true" class="small-icon i-moon icon-dark"></i>
+    <i aria-hidden="true" class="small-icon i-auto icon-auto"></i>
+  </button>
+  <!-- CSS checkbox for my auld acquaintance who disable JS and use color-scheme spoofing. -->
+  <noscript>
+    <label class="header-btn noscript-toggle" title="Theme checkbox">
+      <input type="checkbox" id="theme-toggle" class="sr-only" />
+      <i aria-hidden="true" class="small-icon i-sun icon-light"></i>
+      <i aria-hidden="true" class="small-icon i-moon icon-dark"></i>
+    </label>
+  </noscript>
+</header>

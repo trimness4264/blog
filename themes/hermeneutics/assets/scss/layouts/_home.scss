@@ -1,0 +1,104 @@
+@use "../abstracts/mixins" as m;
+
+.home-container {
+  @include m.flex-col(1rem);
+  > p,
+  > * > p,
+  > * > h2 {
+    font-size: 1.1rem;
+    font-weight: normal;
+    padding-inline-start: 1rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.home-intro {
+  @include m.flex-col(1.5rem);
+  &-bio-svg {
+    line-height: 1;
+    svg {
+      margin-block-end: 0.5rem;
+      height: 2.2rem;
+      width: auto;
+      vertical-align: middle;
+    }
+  }
+
+  &-bio-text {
+    font-family: "Tangerine", var(--herm-font-serif);
+    font-size: 2.2rem;
+    quotes: '"' '"';
+
+    &::before {
+      content: open-quote;
+    }
+
+    &::after {
+      content: close-quote;
+    }
+  }
+
+  blockquote {
+    position: relative;
+    padding: 1.5em 2.5em;
+    color: var(--herm-muted-foreground);
+
+    &::before,
+    &::after {
+      position: absolute;
+      font-size: 1.5em;
+      line-height: 1;
+    }
+
+    &::before {
+      content: "「";
+      top: 0;
+      left: 0;
+    }
+
+    &::after {
+      content: "」";
+      bottom: 0;
+      right: 0;
+    }
+
+    p {
+      margin-block-end: 1.2em;
+      &:last-child {
+        margin-block-end: 0;
+      }
+    }
+
+    cite {
+      display: block;
+      text-align: right;
+      font-style: normal;
+
+      a {
+        transition: color 0.3s var(--herm-ease-std);
+        &:hover {
+          color: var(--herm-primary);
+        }
+      }
+    }
+  }
+}
+
+.home-list {
+  @include m.flex-col(1.5rem);
+  margin-block-end: 1rem;
+}
+
+.home-list-more {
+  transition: color 0.3s var(--herm-ease-std);
+  &:hover {
+    color: var(--herm-primary);
+  }
+}
+
+.faded {
+  color: var(--herm-muted-foreground);
+}

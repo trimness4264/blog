@@ -1,0 +1,14 @@
+@mixin flex-col($gap: 1rem) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin container($gap: 1rem, $mb: clamp(1rem, 2.5vw, 2rem)) {
+  @include flex-col($gap);
+  width: 100%;
+  margin-block: $mb;
+  margin-inline: auto;
+
+  flex-grow: 1;
+}

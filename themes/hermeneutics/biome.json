@@ -1,0 +1,5 @@
+{
+	"files": {
+		"includes": ["**/*.json", "assets/**/*.css", "assets/js/**/*.js"]
+	}
+}

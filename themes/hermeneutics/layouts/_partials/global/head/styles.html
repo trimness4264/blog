@@ -1,0 +1,20 @@
+{{- $opts := dict "transpiler" "dartsass" -}}
+{{- with resources.Get "scss/main.scss" | toCSS $opts | minify | fingerprint -}}
+  <link
+    rel="stylesheet"
+    href="{{ .RelPermalink }}"
+    integrity="{{ .Data.Integrity }}"
+    crossorigin="anonymous"
+  />
+{{- else -}}
+  {{- warnf "main.scss not found!" -}}
+{{- end -}}
+{{- with resources.Get "scss/icon.scss.tmpl" | resources.ExecuteAsTemplate "scss/icon.scss" . | toCSS $opts | minify |
+  fingerprint
+-}}
+  <link
+    rel="stylesheet"
+    href="{{ .RelPermalink }}"
+    integrity="{{ .Data.Integrity }}"
+  />
+{{- end -}}

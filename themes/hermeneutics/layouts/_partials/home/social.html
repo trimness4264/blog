@@ -1,0 +1,18 @@
+<ul class="social-area">
+  {{ range $index, $social := hugo.Data.social.social }}
+    <li
+      data-animate="fade-up"
+      style="--anim-delay: {{ add 0.8 (mul $index 0.1) }}s"
+    >
+      <a
+        href="{{ .url }}"
+        target="_blank"
+        rel="noopener noreferrer {{ .rel }}"
+        aria-label="{{ .name }}"
+        class="social-icon"
+      >
+        <i class="{{ .icon }} medium-icon" aria-hidden="true"></i>
+      </a>
+    </li>
+  {{ end }}
+</ul>

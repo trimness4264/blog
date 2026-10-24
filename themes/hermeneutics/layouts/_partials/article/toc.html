@@ -1,0 +1,14 @@
+<details class="toc">
+  <summary class="toc-header">
+    <h2 class="toc-title">
+      <i class="i-toc small-icon" aria-hidden="true"></i>
+      <span>{{- i18n "article.toc" | default "TOC" -}}</span>
+    </h2>
+    <i class="i-chevron-down small-icon toc-icon" aria-hidden="true"></i>
+  </summary>
+  <div class="toc-wrapper">
+    <nav class="toc-nav">
+      {{ .TableOfContents }}
+    </nav>
+  </div>
+</details>

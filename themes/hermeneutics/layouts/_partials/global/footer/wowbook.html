@@ -1,0 +1,20 @@
+{{- $totalWord := 0 -}}
+{{- range site.RegularPages -}}
+  {{- $totalWord = add $totalWord .WordCount -}}
+{{- end -}}
+{{- $wowWord := div $totalWord 10000 -}}
+{{- $wowBook := "还在努力更新中..加油！加油啦" -}}
+{{- $wowbooks := hugo.Data.wowbook -}}
+{{- $wowBook := "" -}}
+{{- range $wowbooks -}}
+  {{- if and (not $wowBook) (ge $wowWord .words) -}}
+    {{- $wowBook = .text -}}
+  {{- end -}}
+{{- end -}}
+<div class="footer-wowbook">
+  <i aria-hidden="true" class="i-text small-icon"></i>
+  <span>
+    共 <span class="footer-wowbook_counter">{{- $totalWord -}}</span> 字，
+    {{- $wowBook | safeHTML -}}
+  </span>
+</div>

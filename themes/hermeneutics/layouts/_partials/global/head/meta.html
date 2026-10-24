@@ -1,0 +1,37 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+  {{- if .IsHome -}}
+    {{- site.Title -}}
+  {{- else -}}
+    {{- printf "%s | %s" .Title site.Title -}}
+  {{- end -}}
+</title>
+<!-- A pox upon SEO! -->
+{{- with .Summary | default site.Params.description -}}
+  <meta name="description" content="{{ . }}" />
+{{- end -}}
+{{- with site.Params.author.name -}}
+  <meta name="author" content="{{ . }}" />
+{{- end -}}
+{{- with site.Params.author.fedi -}}
+  <meta name="fediverse:creator" content="{{ . }}" />
+{{- end -}}
+<meta name="tdm-reservation" content="1" />
+{{- if site.Language.Locale -}}
+  <link
+    rel="alternate"
+    hreflang="{{- site.Language.Locale -}}"
+    href="{{ .Permalink }}"
+  />
+{{- end -}}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+{{- if site.Params.humanstxt -}}
+  <link rel="author" href="/humans.txt" />
+{{- end -}}
+{{- with site.Params.webmention -}}
+  {{- if .enable -}}
+    <link rel="webmention" href="{{ .endpoint }}" />
+  {{- end -}}
+{{- end -}}
+{{- partial "opengraph.html" . -}}

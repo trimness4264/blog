@@ -1,0 +1,9 @@
+{{- with site.Params.favicon -}}
+  {{- with resources.Get . -}}
+    <link rel="shortcut icon" href="{{ .RelPermalink }}" />
+  {{- else -}}
+    {{- if fileExists (printf "static/%s" .) -}}
+      <link rel="shortcut icon" href="{{ . | relURL }}" />
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

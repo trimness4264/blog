@@ -1,0 +1,22 @@
+main = "Main area"
+
+[home]
+  recent = "Recent Posts"
+  random = "Random Selections"
+
+[posts]
+  pinned   = "Pinned"
+  readmore = "Read More"
+
+[article]
+  comment        = "Comment"
+  meta_lastmod   = "Updated on"
+  meta_mins_read = "mins read"
+  meta_words     = "words"
+  toc            = "Table of Contents"
+
+[404]
+  desc   = "The party would like to remind you that the page you're looking for never exists."
+  gohome = "Go Back Home"
+  posts  = "View Posts"
+  title  = "Page Not Found"

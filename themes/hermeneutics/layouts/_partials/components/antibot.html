@@ -1,0 +1,11 @@
+{{- $enableAntiBot := false -}}
+{{- with site.Params.antibot -}}
+  {{- $enableAntiBot = .enable -}}
+{{- end -}}
+{{- with .Params.antibot -}}
+  {{- $enableAntiBot = . -}}
+{{- end -}}
+{{- if $enableAntiBot -}}
+  {{- $antibotType := site.Params.antibot.type -}}
+  {{- partial (printf "components/antibot/%s.html" $antibotType) . -}}
+{{- end -}}

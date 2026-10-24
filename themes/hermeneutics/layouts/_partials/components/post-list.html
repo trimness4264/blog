@@ -1,0 +1,33 @@
+<ul>
+  {{- range . -}}
+    <li>
+      <article class="post-list-item">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">
+          {{- .Date.Format "Jan 02, 2006" -}}
+        </time>
+        <div class="post-list-content">
+          <h3 class="post-list-title">
+            <a href="{{- .RelPermalink -}}" class="stretched-link"
+              >{{- .Title -}}</a
+            >
+            {{- if .Params.featured -}}
+              <i
+                class="i-featured medium-icon"
+                role="img"
+                aria-label="精选文章"
+              ></i>
+            {{- end -}}
+          </h3>
+          <p class="post-list-summary">{{ .Summary }}</p>
+        </div>
+        {{- with .Params.categories -}}
+          <div class="post-list-category">
+            {{- range . -}}
+              <span aria-hidden="true">{{- . -}}</span>
+            {{- end -}}
+          </div>
+        {{- end -}}
+      </article>
+    </li>
+  {{- end -}}
+</ul>

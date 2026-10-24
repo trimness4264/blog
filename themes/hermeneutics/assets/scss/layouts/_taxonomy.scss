@@ -1,0 +1,53 @@
+@use "../abstracts/mixins" as m;
+
+.taxonomy-list {
+  @include m.flex-col;
+}
+
+.taxonomy-card {
+  @include m.flex-col(0.75rem);
+  padding: 1.5rem;
+
+  border-radius: 0.75rem;
+  border: 1px solid var(--herm-border);
+
+  transition:
+    border-color 0.2s var(--herm-ease-std),
+    box-shadow 0.2s var(--herm-ease-std),
+    transform 0.2s var(--herm-ease-std);
+
+  &:hover {
+    border-color: var(--herm-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--herm-shadow-sm);
+
+    .taxonomy-name {
+      color: var(--herm-primary);
+    }
+  }
+}
+
+.taxonomy-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.taxonomy-name {
+  font-size: 1.25rem;
+  color: var(--herm-foreground);
+  transition: color 0.2s var(--herm-ease-std);
+}
+
+.taxonomy-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--herm-muted-foreground);
+
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

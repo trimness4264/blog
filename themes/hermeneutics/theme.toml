@@ -1,0 +1,12 @@
+description = "But I call them all delusion —— beautiful delusion."
+license     = "MIT"
+licenselink = "https://src.chlo.is/chlorine/hermeneutics/src/branch/main/LICENSE"
+name        = "Hermeneutics"
+
+homepage = "https://src.chlo.is/chlorine/hermeneutics"
+
+demosite = "https://chlo.is"
+
+[author]
+  homepage = "https://chlo.is"
+  name     = "Chlorine"

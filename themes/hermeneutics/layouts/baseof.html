@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="{{- site.Language.Locale -}}" data-theme="auto">
+  <head>
+    {{- partial "global/head.html" . -}}
+    {{- block "head" . -}}{{- end -}}
+  </head>
+  <body>
+    {{- partialCached "components/h-card.html" . "components_h-card" -}}
+    {{- partial "global/header.html" . -}}
+    {{- block "main" . -}}{{- end -}}
+    {{- partialCached "global/footer.html" . "global_footer" -}}
+    {{- partialCached "components/antibot.html" . "components_antibot" -}}
+    {{- with resources.Get "vendor/instantpage.min.js" | js.Build (dict "minify" true) | fingerprint -}}
+      <script
+        src="{{ .RelPermalink }}"
+        type="module"
+        integrity="{{ .Data.Integrity }}"
+        crossorigin="anonymous"
+        defer
+      ></script>
+    {{- end -}}
+  </body>
+</html>

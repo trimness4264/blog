@@ -1,0 +1,9 @@
+<section class="comment-section">
+  <header>
+    <i aria-hidden="true" class="i-comment"></i>
+    <h2>{{ i18n "article.comment" }}</h2>
+  </header>
+  <div class="article-content">
+    {{ partial "article/comment-content.md" . | markdownify }}
+  </div>
+</section>

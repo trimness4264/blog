@@ -1,0 +1,55 @@
+{{- $path := .Get 0 | default "friends.friend" -}}
+{{- $pathParts := split $path "." -}}
+{{- $data := hugo.Data -}}
+{{- range $pathParts -}}
+  {{- $data = index $data . -}}
+{{- end -}}
+{{- $friends := $data -}}
+<ul class="friends">
+  {{- range $friends -}}
+    <li>
+      <a
+        href="{{- .url -}}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-labelledby="friend-name-{{ .name | urlize }}"
+        aria-describedby="friend-des-{{ .name | urlize }}"
+        class="friend"
+      >
+        {{- with .room -}}
+          <span class="friend_badge" aria-hidden="true">{{- . -}}</span>
+        {{- end -}}
+        <figure class="friend_avatar">
+          {{- if .ava -}}
+            <img
+              src="{{- .ava -}}"
+              alt="{{- .name -}}'s avatar"
+              class="no-lightbox"
+            />
+          {{- else -}}
+            <span class="friend_avatar-fallback" aria-hidden="true"
+              >{{- substr .name 0 1 -}}</span
+            >
+          {{- end -}}
+        </figure>
+        <div class="friend_content">
+          <div class="friend_header">
+            <h3 id="friend-name-{{ .name | urlize }}" class="friend-name">
+              {{- .name -}}
+              <span class="sr-only">(opens in a new tab)</span>
+            </h3>
+            <p id="friend-des-{{ .name | urlize }}" class="friend_desc">
+              {{- .des -}}
+            </p>
+          </div>
+          {{- with .note -}}
+            <div class="friend_note" aria-hidden="true">
+              <i class="i-notebook small-icon"></i>
+              <span>{{- . -}}</span>
+            </div>
+          {{- end -}}
+        </div>
+      </a>
+    </li>
+  {{- end -}}
+</ul>

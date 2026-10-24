@@ -1,0 +1,88 @@
+@use "../abstracts/mixins" as m;
+
+%footer-inline-flex {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+body > footer {
+  width: 100%;
+
+  @include m.flex-col(1.25rem);
+  margin-block-start: auto;
+  margin-inline: auto;
+  padding: 1rem;
+
+  border-top: 1px solid var(--herm-border);
+
+  color: color-mix(in oklch, var(--herm-muted-foreground), transparent 30%);
+  font-size: var(--herm-text-sm);
+
+  a {
+    transition: color 0.15s var(--herm-ease-std);
+
+    &:hover {
+      color: var(--herm-primary);
+    }
+  }
+}
+
+// footer components
+
+.footer-wowbook {
+  @extend %footer-inline-flex;
+  &_counter {
+    font-family: var(--herm-font-mono);
+  }
+}
+
+.footer-colophon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  @media screen and (min-width: 768px) {
+    justify-content: start;
+  }
+}
+
+.footer-copyleft {
+  @extend %footer-inline-flex;
+}
+
+.footer-webrings {
+  @include m.flex-col(0.5rem);
+  align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 0;
+
+    & > li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-block: 0;
+      padding-inline-start: 0;
+      padding-inline-end: 1.5rem;
+
+      position: relative;
+    }
+  }
+}
+
+.footer-alternatives {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+
+  font-size: 1rem;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
+}

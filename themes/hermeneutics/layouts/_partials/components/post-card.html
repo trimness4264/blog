@@ -1,0 +1,44 @@
+{{- $post := . -}}
+{{- $coverResource := $post.Resources.GetMatch "cover.*" -}}
+{{- $src := "" -}}
+{{- $width := "" -}}
+{{- $height := "" -}}
+{{- if $coverResource -}}
+  {{- $thumb := $coverResource.Resize "800x q75" -}}
+  {{- $src = $thumb.RelPermalink -}}
+  {{- $width = $thumb.Width -}}
+  {{- $height = $thumb.Height -}}
+{{- else -}}
+  {{- $src = $post.Params.featuredImage | default "/img/default-cover.webp" -}}
+{{- end -}}
+<article class="post-card">
+  <figure>
+    <img
+      src="{{ $src }}"
+      alt="{{ $post.Title }} Cover Image"
+      {{ with $width }}width="{{ . }}"{{ end }}
+      {{ with $height }}height="{{ . }}"{{ end }}
+      loading="lazy"
+    />
+  </figure>
+  <div class="post-card-content">
+    <h3>
+      <a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>
+    </h3>
+    <p>{{ $post.Summary | plainify | safeHTML }}</p>
+  </div>
+  <div class="post-card-metadata">
+    <time>{{- $post.Date.Format "2006-01-02" -}}</time>
+    <span class="post-card-metadata_readingtime">
+      <i aria-hidden="true" class="i-time small-icon"></i>
+      <span>{{ $post.ReadingTime }} min read</span>
+    </span>
+    {{- if $post.Params.featured -}}
+      <span class="post-card-metadata_featured">
+        <i aria-hidden="true" class="i-featured small-icon"></i>
+        <span>{{- i18n "posts.pinned" -}}</span>
+      </span>
+    {{- end -}}
+  </div>
+  <a href="{{ $post.RelPermalink }}" aria-label="阅读文章"></a>
+</article>

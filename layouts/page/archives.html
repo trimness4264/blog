@@ -1,0 +1,22 @@
+{{- define "main" -}}
+  {{- $posts := where site.RegularPages "Section" "in" site.Params.mainSections -}}
+  <main>
+    <header class="default-header">
+      <h1 class="default-title">{{ .Title | default "Archive" }}</h1>
+      <p class="default-counter">N = {{ len $posts }}</p>
+    </header>
+    <div>
+      {{- range $posts.GroupByDate "2006" -}}
+        <section aria-labelledby="year-{{ .Key }}" class="post-list-group">
+          <header>
+            <h2 id="year-{{ .Key }}">
+              <time>{{- .Key -}}</time>
+            </h2>
+            <div class="divider" aria-hidden="true"></div>
+          </header>
+          {{- partial "components/post-list.html" .Pages -}}
+        </section>
+      {{- end -}}
+    </div>
+  </main>
+{{- end -}}

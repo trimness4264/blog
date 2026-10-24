@@ -1,0 +1,3 @@
+{{- range $index, $social := hugo.Data.relme.links -}}
+  <link href="{{ .url }}" rel="{{ .rel }}" />
+{{- end -}}

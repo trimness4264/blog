@@ -1,0 +1,10 @@
+{{- $alternatives := site.Params.alternatives.main -}}
+<ul class="footer-alternatives">
+  {{- range $alternatives -}}
+    <li>
+      <a href="{{- .href -}}" target="_blank" rel="noopener noreferrer"
+        >{{ .name }}</a
+      >
+    </li>
+  {{- end -}}
+</ul>

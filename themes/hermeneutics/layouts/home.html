@@ -1,0 +1,52 @@
+{{- define "main" -}}
+  <main class="home-container">
+    <section class="home-intro">
+      {{- if site.Params.advanced.svgsign.enable -}}
+        <h1
+          class="home-intro-bio-svg"
+          aria-label="{{- site.Params.advanced.svgsign.text | default (site.Params.author.bio) -}}"
+        >
+          <div aria-hidden="true">
+            {{ with resources.Get "signature.svg" | minify }}
+              {{ .Content | safeHTML }}
+            {{ end }}
+          </div>
+        </h1>
+      {{- else -}}
+        <h1 class="home-intro-bio-text">{{- site.Params.author.bio -}}</h1>
+      {{- end -}}
+      {{- $quotes := hugo.Data.quotes.list -}}
+      {{- if $quotes -}}
+        {{- with index $quotes 0 -}}
+          <blockquote>
+            <p>{{- .quote -}}</p>
+            <footer>
+              <cite><a href="{{- .url -}}">{{- .source -}}</a></cite>
+            </footer>
+          </blockquote>
+        {{- end -}}
+      {{- end -}}
+    </section>
+    {{- $posts := where site.RegularPages "Section" "posts" -}}
+    <section class="home-list">
+      <h2>{{ i18n "home.recent" }}</h2>
+      {{- $recentPosts := $posts | first 2 -}}
+      {{- partial "components/post-list.html" $recentPosts -}}
+    </section>
+    <section class="home-list">
+      <h2>{{ i18n "home.random" }}</h2>
+      {{- $oneYearAgo := now.AddDate -1 -6 0 -}}
+      {{- $recentPosts := where $posts "Date" "ge" $oneYearAgo -}}
+      {{- $samplePosts := $recentPosts | collections.Shuffle | first 4 -}}
+      {{- partial "components/post-list.html" $samplePosts -}}
+      <p class="faded">
+        Dice rolled at
+        <code>#{{ os.Getenv "GIT_COMMIT_HASH" | default "1919810" }}</code>.
+      </p>
+      <p class="faded">
+        <a href="/posts" class="home-list-more">View Full Sample →</a>
+      </p>
+      <noscript> <p class="faded nojs-letter"></p> </noscript>
+    </section>
+  </main>
+{{- end -}}

@@ -4,6 +4,8 @@ draft = false
 title = 'How I jailbreak my iPad 6th generation with palera1n using archlinux'
 +++
 
+`Update: You should now use Dopamine 3.0 instead because it is a better choice in most of cases.`
+
 # Preparations
 
 - an iPad that has A8-A11 CPU
@@ -54,10 +56,6 @@ Fine! You have jailbreaked your iPad successfully in these simple steps.
 But notice that this type of jailbreak is not pernament, which mean you have to apply these procedures every time after rebooting your device to reenable jailbreak.
 
 Now, you can install whatever apps you want freely on this apple device instead of bearing Apple's strict censorship to the apps on the `App Store`.
-
-# Fix the AppStore
-
-Though I don't suggest using AppStore after jailbreaking. While it is still possible to make it work. Just install the `Choicy` App and configure it to disable the tweaks for Appstore in the `Choicy` section in the system `Settings` application.
 
 # Ending
 

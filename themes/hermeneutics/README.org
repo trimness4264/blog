@@ -1,0 +1,82 @@
+#+TITLE: Hermeneutics
+#+AUTHOR: Chlorine
+#+OPTIONS: toc:nil
+
+Hermeneutics, a Hugo theme.
+
+* Origin
+
+The name comes from a song I really love. You can find the original video [[https://www.bilibili.com/video/BV18S4y1v7gV/][here]].
+
+This theme doesn't have much to do with the religious or philosophical meaning of "hermeneutics", so you don't have to expect its style to match your first impression of the word.
+
+* Features
+
+- Sleek and clean (at least in my opinion).
+- Lightweight (maybe).
+- Fully responsive (maybe).
+- Highly native (no NPM).
+- Almost no JS.
+- Good enough nice-to-haves:
+  - Atom Feed & JSON Feed (how dare you brag about something so basic as if it were a feature?).
+  - JS-free LaTeX support.
+  - Simple image lightbox.
+  - Git forge repo card support (GitHub/GitLab/Gitea/Forgejo).
+  - GoatCounter (Doubleplusbased software, but the dashbord is too retro).
+- Mainly written by human... wait, not human, to be precise, Element Musume.
+
+* Non-features
+
+It's advisable to show "What you used to have and why you purged them" rather than "What you have".
+
+| Anti-feature              | Why?                                              |
+|---------------------------+---------------------------------------------------|
+| UnoCSS                    | It needs NPM and I'm sick of the atom-class soup. |
+| Shiki                     | It needs NPM.                                     |
+| Search (Algolia)          | Relies on non-free services.                      |
+| Search (Pagefind)         | I exercised my veto power.                        |
+| Gallery                   | I exercised my veto power.                        |
+| =[[Wikilink]]= support      | I don't use Obsidian any more.                    |
+| Announcement              | Vibe check failed.                                |
+| Reading progress bar/ball | I don't know why it got on my nerves.             |
+| Beautiful license card    | Vibe check failed.                                |
+| Beautiful series nav      | Vibe check failed.                                |
+| Beautiful taxonomy        | Vibe check failed.                                |
+| Custom font               | Slow.                                             |
+| Bilibili card shortcode   | Vibe check failed.                                |
+| Commenting system         | JUST DO IT !!!                                    |
+
+* Progressive Enhancement
+
+Progressive enhancement is a diversified and complex concept, and we will only talk about Javascript here.
+
+Currently, Hermeneutics employs only three JS snippets:
+
+- [[https://instant.page/][instantpage.js]]: Only speeds up loading and does not affect the loading process itself.
+- Lightbox: You can click the image to open the original version under NoJS.
+- Theme switching: It's a little tricky. But the result is satisfying to me: ~prefers-color-scheme~ still works and you can use the CSS checkbox to manually switch themes, though not persisted.
+
+So yeah, 100% progressive enhancement in JS context. :3
+
+* Roadmap
+
+- [X] (Done) Purge commenting system completely.
+- [X] (Done) Add Fediverse link to replace commenting sys.
+- [X] (Done) Add Webmention.
+- [ ] (WIP) Add mail form.
+- [ ] (High) Make the SCSS code more abstract.
+- [ ] (Maybe) Migrate to [[https://www.getzola.org/][Zola]].
+- [ ] (Probably won't) Purge all JS.
+- [ ] (Almost impossible) Stop yak-shaving.
+
+* Anti-roadmap
+
+Everything else.
+
+* Development
+
+You know how.
+
+* License
+
+This theme is freely distributed under the MIT License, *both free as in beer and free as in speech*.

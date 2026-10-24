@@ -1,0 +1,12 @@
+<footer>
+  {{- partial "global/footer/alternative.html" . -}}
+  {{- if site.Params.misc.wowbook | default true -}}
+    {{- partial "global/footer/wowbook.html" . -}}
+  {{- end -}}
+  {{- if site.Params.misc.colophon | default true -}}
+    {{- partial "global/footer/colophon.html" . -}}
+  {{- end -}}
+  {{- if site.Params.misc.webring | default true -}}
+    {{- partial "global/footer/webring.html" . -}}
+  {{- end -}}
+</footer>

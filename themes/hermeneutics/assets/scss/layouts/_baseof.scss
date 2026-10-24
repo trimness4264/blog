@@ -1,0 +1,63 @@
+@use "../abstracts/mixins" as m;
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  width: var(--herm-main-width);
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  background: var(--herm-background);
+  transition:
+    color 0.3s var(--herm-ease-std),
+    background-color 0.3s var(--herm-ease-std),
+    border-color 0.3s var(--herm-ease-std);
+
+  display: flex;
+  flex-direction: column;
+
+  /* fonts */
+  font-family: var(--herm-font-serif);
+  color: var(--herm-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-variant-east-asian: full-width;
+  font-feature-settings: "palt" 0;
+  font-synthesis: none;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+body > main {
+  @include m.container($gap: 3rem);
+}
+
+.default-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > p {
+    color: var(--herm-muted-foreground);
+  }
+}
+
+.default-title {
+  font-weight: 500;
+  font-size: clamp(var(--herm-text-2xl), 4vw, var(--herm-text-3xl));
+
+  &.article-title {
+    margin-block-end: 1.25rem;
+  }
+}
+
+.default-counter {
+  font-family: var(--herm-font-mono);
+}

@@ -1,0 +1,124 @@
+body > header {
+  width: 100%;
+  height: 4rem;
+
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  flex-shrink: 0;
+
+  > img {
+    width: 2rem;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  letter-spacing: clamp(0.08em, 0.8vw + 0.04em, 0.22em);
+
+  font-family: var(--herm-font-sans-serif);
+  font-size: var(--herm-text-sm);
+  text-transform: uppercase;
+  font-weight: medium;
+  color: var(--herm-muted-foreground);
+
+  transition: color 0.3s var(--herm-ease-std);
+
+  @media screen and (min-width: 640px) {
+    padding: 0.5rem 1rem;
+    gap: 1.5rem;
+  }
+
+  // menu items
+  a {
+    &:hover {
+      color: var(--herm-foreground);
+    }
+  }
+}
+
+.header-btn {
+  width: 2rem;
+  height: 2rem;
+
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+  flex-shrink: 0;
+
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+
+  color: var(--herm-muted-foreground);
+  transition: color 0.3s var(--herm-ease-std);
+
+  &:hover {
+    color: var(--herm-foreground);
+  }
+}
+
+.header-btn .icon-light,
+.header-btn .icon-dark,
+.header-btn .icon-auto {
+  display: none;
+}
+
+:root[data-theme="light"] .header-btn .icon-light {
+  display: inline-block;
+}
+
+:root[data-theme="dark"] .header-btn .icon-dark {
+  display: inline-block;
+}
+
+:root[data-theme="auto"] .header-btn .icon-auto,
+:root:not([data-theme]) .header-btn .icon-auto {
+  display: inline-block;
+}
+
+.noscript-toggle .icon-light,
+.noscript-toggle .icon-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: light) {
+  .noscript-toggle .icon-light {
+    display: inline-block;
+  }
+  .noscript-toggle:has(#theme-toggle:checked) .icon-light {
+    display: none;
+  }
+  .noscript-toggle:has(#theme-toggle:checked) .icon-dark {
+    display: inline-block;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .noscript-toggle .icon-dark {
+    display: inline-block;
+  }
+  .noscript-toggle:has(#theme-toggle:checked) .icon-dark {
+    display: none;
+  }
+  .noscript-toggle:has(#theme-toggle:checked) .icon-light {
+    display: inline-block;
+  }
+}
+
+.js-only {
+  display: none;
+}
+
+:root.js-enabled .js-only {
+  display: inline-grid;
+}

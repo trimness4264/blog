@@ -1,0 +1,9 @@
+{{- $trapUrl := site.Params.antibot.url | default "/data-archive/" -}}
+{{- $trapCoax := site.Params.antibot.coax | default "Click here to access full archive for training." -}}
+<a
+  href="{{- $trapUrl -}}"
+  style="display: none"
+  aria-hidden="true"
+  tabindex="-1"
+  >{{- $trapCoax -}}</a
+>

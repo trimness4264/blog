@@ -18,4 +18,4 @@ draft: false
 - PERSONA
 - ...
 # 关于本站
-基于 Hugo 构建，使用 `hugo-theme-stack` 主题，托管在Cloudflare。
+基于 Hugo 构建，使用 `Hermeneutics` 主题，托管在Cloudflare。

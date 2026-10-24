@@ -1,0 +1,42 @@
+{{- with .Params.series -}}
+  {{- $series := . -}}
+  {{- $sortedPages := (where site.RegularPages "Params.series" $series).ByDate -}}
+  {{- $currentIndex := 0 -}}
+  {{- range $index, $page := $sortedPages -}}
+    {{- if eq $page.File.UniqueID $.File.UniqueID -}}
+      {{- $currentIndex = $index -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $prevPage := index $sortedPages (sub $currentIndex 1) -}}
+  {{- $nextPage := index $sortedPages (add $currentIndex 1) -}}
+  {{- $currentNum := add $currentIndex 1 -}}
+  {{- $totalNum := len $sortedPages -}}
+  {{- $ariaLabel := i18n "article.series-nav_label" -}}
+  <nav class="series-nav" aria-label="{{ $ariaLabel }}">
+    <header>
+      <i class="i-notebook small-icon" aria-hidden="true"></i>
+      <h2>
+        {{ i18n "article.series-nav_prefix" }}<a href="/series/{{- $series -}}"
+          >{{- $series -}}</a
+        >
+      </h2>
+      <span class="counter">{{- $currentNum -}}/{{- $totalNum -}}</span>
+    </header>
+    {{- if or $prevPage $nextPage -}}
+      <ul>
+        {{- with $prevPage -}}
+          <li>
+            <span>{{- i18n "article.series-nav_prev" -}}</span>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </li>
+        {{- end -}}
+        {{- with $nextPage -}}
+          <li>
+            <span>{{- i18n "article.series-nav_next" -}}</span>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </li>
+        {{- end -}}
+      </ul>
+    {{- end -}}
+  </nav>
+{{- end -}}

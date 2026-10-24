@@ -1,0 +1,16 @@
+{{- define "main" -}}
+  <main class="h-entry">
+    <header>
+      <h1 class="article-title default-title p-name">{{- .Title -}}</h1>
+      {{- partial "article/metadata.html" . -}}
+    </header>
+    {{- if .TableOfContents -}}
+      {{- partial "article/toc.html" . -}}
+    {{- end -}}
+    <article class="e-content article-content">{{- .Content -}}</article>
+    {{- if eq .Section "posts" -}}
+      {{- partial "article/serie.html" . -}}
+      {{- partial "article/comment.html" . -}}
+    {{- end -}}
+  </main>
+{{- end -}}

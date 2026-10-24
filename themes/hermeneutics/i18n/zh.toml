@@ -1,0 +1,31 @@
+main = "主要内容区域"
+
+[home]
+  recent = "最近发布"
+  random = "随机博文"
+
+[posts]
+  pinned   = "置顶"
+  readmore = "阅读更多"
+
+[article]
+  comment           = "评论"
+  meta_pubtime      = "发布时间"
+  meta_lastmod      = "更新于"
+  meta_mins_read    = "分钟阅读"
+  meta_words        = "字"
+  meta_category     = "分类名称"
+  series-nav_label  = "系列文章导航"
+  series-nav_prefix = "系列："
+  series-nav_prev   = "上一篇："
+  series-nav_next   = "下一篇："
+  toc               = "目录"
+
+[404]
+  desc   = "您正在寻找的页面不存在。"
+  gohome = "返回首页"
+  posts  = "浏览文章"
+  title  = "页面未找到"
+
+[footer]
+  runtime = "已经运行"

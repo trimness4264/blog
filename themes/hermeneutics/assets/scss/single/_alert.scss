@@ -1,0 +1,46 @@
+.alert {
+  --alert-color: var(--herm-primary);
+
+  margin-block: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+
+  border: 1px solid
+    color-mix(in oklch, var(--alert-color) 19%, var(--herm-border));
+  border-left: 0.2rem solid var(--alert-color);
+  background-color: color-mix(
+    in oklch,
+    var(--alert-color) 8%,
+    var(--herm-pure)
+  );
+
+  > header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--alert-color);
+  }
+
+  > .alert-content p {
+    margin-block: 0;
+    color: var(--herm-foreground);
+  }
+
+  &--tip {
+    --alert-color: var(--herm-green);
+  }
+  &--caution {
+    --alert-color: var(--herm-red);
+  }
+  &--important {
+    --alert-color: var(--herm-purple);
+  }
+  &--warning {
+    --alert-color: var(--herm-amber);
+  }
+  &--note {
+    --alert-color: var(--herm-blue);
+  }
+}

@@ -1,0 +1,17 @@
+@mixin icon($size: 1rem) {
+  display: inline-block;
+  width: $size;
+  height: $size;
+}
+
+.small-icon {
+  @include icon;
+}
+
+.medium-icon {
+  @include icon(1.25rem);
+}
+
+.large-icon {
+  @include icon(1.5rem);
+}

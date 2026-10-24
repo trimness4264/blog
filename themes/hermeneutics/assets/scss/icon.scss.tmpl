@@ -1,0 +1,21 @@
+{{ range resources.Match "vendor/icons/*.svg" }}
+  {{ $name := strings.TrimSuffix ".svg" (path.Base .Name) }}
+  
+  {{ $svg := .Content }}
+  
+  {{ $svg = replace $svg "\n" "" }}
+  {{ $svg = replace $svg "\r" "" }}
+  {{ $svg = replace $svg "%" "%25" }}
+  {{ $svg = replace $svg "<" "%3C" }}
+  {{ $svg = replace $svg ">" "%3E" }}
+  {{ $svg = replace $svg "#" "%23" }}
+  {{ $svg = replace $svg "\"" "%22" }}
+  {{ $svg = replace $svg "'" "%27" }}
+
+  .i-{{ $name }} {
+    background-color: currentColor;
+    vertical-align: middle;
+    -webkit-mask: url("data:image/svg+xml,{{ $svg | safeCSS }}") no-repeat center / 100%;
+    mask: url("data:image/svg+xml,{{ $svg | safeCSS }}") no-repeat center / 100%;
+  }
+{{ end }}

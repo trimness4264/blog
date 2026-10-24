@@ -1,12 +1,16 @@
 baseURL = "https://example.com/"
 title = "Leo's Blog"
+theme = "hermeneutics"
 defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = false
 hasCJKLanguage = true
 enableRobotsTXT = true
 
-[pagination]
-pagerSize = 5
+[build]
+noJSConfigInAssets = true
+
+[security.funcs]
+getenv = ["^HUGO_", "^CI$", "^GIT_COMMIT_HASH$"]
 
 [outputs]
 home = ["HTML", "RSS"]

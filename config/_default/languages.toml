@@ -1,5 +1,4 @@
 [zh]
-label = "中文"
 locale = "zh-CN"
 contentDir = "content/zh"
 weight = 1
@@ -13,35 +12,20 @@ identifier = "home"
 name = "首页"
 url = "/"
 weight = 10
-[zh.menus.main.params]
-icon = "home"
 
 [[zh.menus.main]]
 identifier = "archives"
 name = "归档"
 url = "/archives/"
 weight = 20
-[zh.menus.main.params]
-icon = "archives"
-
-[[zh.menus.main]]
-identifier = "search"
-name = "搜索"
-url = "/search/"
-weight = 30
-[zh.menus.main.params]
-icon = "search"
 
 [[zh.menus.main]]
 identifier = "about"
 name = "关于"
 url = "/about/"
 weight = 40
-[zh.menus.main.params]
-icon = "user"
 
 [en]
-label = "English"
 locale = "en-us"
 contentDir = "content/en"
 weight = 2
@@ -55,29 +39,15 @@ identifier = "home"
 name = "Home"
 url = "/en/"
 weight = 10
-[en.menus.main.params]
-icon = "home"
 
 [[en.menus.main]]
 identifier = "archives"
 name = "Archives"
 url = "/en/archives/"
 weight = 20
-[en.menus.main.params]
-icon = "archives"
-
-[[en.menus.main]]
-identifier = "search"
-name = "Search"
-url = "/en/search/"
-weight = 30
-[en.menus.main.params]
-icon = "search"
 
 [[en.menus.main]]
 identifier = "about"
 name = "About"
 url = "/en/about/"
 weight = 40
-[en.menus.main.params]
-icon = "user"

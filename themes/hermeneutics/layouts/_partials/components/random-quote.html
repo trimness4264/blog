@@ -1,0 +1,13 @@
+{{- $quotes := hugo.Data.quotes.list -}}
+{{- if $quotes -}}
+  {{- $length := len $quotes -}}
+  {{- $index := mod (now.Unix) $length -}}
+  {{- with index $quotes $index -}}
+    <blockquote>
+      <p>{{- .quote -}}</p>
+      <footer>
+        <cite><a href="{{- .url -}}">{{- .source -}}</a></cite>
+      </footer>
+    </blockquote>
+  {{- end -}}
+{{- end -}}

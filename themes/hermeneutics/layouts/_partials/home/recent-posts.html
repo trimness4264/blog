@@ -1,0 +1,26 @@
+<section id="recent-posts" class="recent-posts">
+  <h2 class="sr-only">Recent Posts</h2>
+  <ul class="post-cards">
+    {{- $posts := where site.RegularPages "Section" "posts" -}}
+    {{- $featuredPosts := where $posts "Params.featured" true -}}
+    {{- $recentPosts := $posts | first 6 -}}
+    {{- $displayPosts := union $featuredPosts $recentPosts | first 6 -}}
+    {{- range $index, $post := $displayPosts -}}
+      {{- $delay := add 1.0 (mul $index 0.1) -}}
+      <li data-animate="fade-up" style="--anim-delay: {{ $delay }}s;">
+        {{- partialCached "components/post-card.html" $post $post.RelPermalink -}}
+      </li>
+    {{- end -}}
+  </ul>
+  <div class="readmore">
+    <a
+      href="/posts"
+      data-animate="fade-up"
+      class="btn btn-foreground"
+      style="--anim-delay: 1.6s"
+    >
+      <i aria-hidden="true" class="i-arrow-right medium-icon"></i>
+      <span>{{- i18n "posts.readmore" -}}</span>
+    </a>
+  </div>
+</section>

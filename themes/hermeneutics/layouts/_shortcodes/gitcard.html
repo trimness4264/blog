@@ -1,0 +1,79 @@
+{{- $repo := .Get "repo" -}}
+{{- $host := .Get "host" | default "github" -}}
+{{- $baseURL := .Get "baseURL" -}}
+{{- $manualLang := .Get "lang" -}}
+{{- $manualLicense := .Get "license" -}}
+{{- $icon := printf "i-%s" $host -}}
+{{- $apiUrl := printf "https://api.github.com/repos/%s" $repo -}}
+{{- if eq $host "gitlab" -}}
+  {{- $apiUrl = printf "%s/api/v4/projects/%s" ($baseURL | default "https://gitlab.com") (replace $repo "/" "%2F") -}}
+{{- else if eq $host "codeberg" -}}
+  {{- $apiUrl = printf "https://codeberg.org/api/v1/repos/%s" $repo -}}
+{{- else if in (slice "gitea" "forgejo") $host -}}
+  {{- $apiUrl = printf "%s/api/v1/repos/%s" ($baseURL | default "https://gitea.com") $repo -}}
+{{- end -}}
+{{- $opts := dict "headers" (dict "Accept" "application/json" "User-Agent" "Hugo-Site/1.0") -}}
+{{- with resources.GetRemote $apiUrl $opts -}}
+  {{- $data := .Content | transform.Unmarshal -}}
+  {{- $fullName := $data.full_name | default $data.path_with_namespace -}}
+  {{- $repoUrl := $data.html_url | default $data.web_url -}}
+  {{- $stars := $data.stargazers_count | default $data.stars_count | default $data.star_count | default 0 -}}
+  {{- $date := $data.pushed_at | default $data.updated_at | default $data.last_activity_at -}}
+  {{- $lang := $manualLang | default $data.language -}}
+  {{- $licenseDisplay := $manualLicense -}}
+  {{- if not $licenseDisplay -}}
+    {{- if reflect.IsMap $data.license -}}
+      {{- $licenseDisplay = $data.license.spdx_id | default $data.license.name | default $data.license.nickname -}}
+    {{- else if reflect.IsSlice $data.licenses -}}
+      {{- range first 1 $data.licenses }}{{ $licenseDisplay = . }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $langColor := index hugo.Data.gitColors $lang | default "#8b949e" -}}
+  <div class="gitcard">
+    <header>
+      <a href="{{- $repoUrl -}}" target="_blank" rel="noopener noreferrer">
+        <i class="{{- $icon }} large-icon"></i>
+        <span>{{- $fullName -}}</span>
+      </a>
+    </header>
+    {{- with $data.description -}}
+      <p>{{- . -}}</p>
+    {{- end -}}
+    <footer>
+      <ul>
+        {{- with $lang -}}
+          <li title="Language">
+            <i
+              class="gitcard-language"
+              style="background-color: {{- $langColor | safeCSS -}}"
+            ></i>
+            <span>{{- . -}}</span>
+          </li>
+        {{- end -}}
+        <li title="Stars">
+          <i class="i-star small-icon"></i>
+          <span>{{- $stars -}}</span>
+        </li>
+        {{- if $licenseDisplay -}}
+          <li title="License">
+            <i class="i-license small-icon"></i>
+            <span>{{- $licenseDisplay -}}</span>
+          </li>
+        {{- else if isset $data "forks_count" -}}
+          <li title="Fork">
+            <i class="i-fork small-icon"></i>
+            <span>{{- $data.forks_count -}}</span>
+          </li>
+        {{- end -}}
+        <li title="Last Updated At">
+          <i class="i-time small-icon"></i>
+          <span>{{- time.Format "2006-01-02" $date -}}</span>
+        </li>
+      </ul>
+    </footer>
+  </div>
+{{- else -}}
+  <div class="gitcard-error">
+    Error loading data for {{ $host }}: {{ $repo }}
+  </div>
+{{- end -}}

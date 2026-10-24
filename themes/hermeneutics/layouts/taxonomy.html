@@ -1,0 +1,25 @@
+{{- define "main" -}}
+  <main>
+    <header class="default-header">
+      <h1 class="default-title">{{- .Title -}}</h1>
+    </header>
+    <ul class="taxonomy-list">
+      {{- $terms := .Data.Terms -}}
+      {{- range $key, $value := $terms -}}
+        <li class="taxonomy-item">
+          <a href="{{- $value.Page.RelPermalink -}}" class="taxonomy-card">
+            <div class="taxonomy-header">
+              <h2 class="taxonomy-name">{{- $value.Page.Title -}}</h2>
+              <span class="counter" aria-label="{{ len $value.Pages }} articles"
+                >{{- len $value.Pages -}}</span
+              >
+            </div>
+            {{- with $value.Page.Description -}}
+              <p class="taxonomy-desc">{{- . -}}</p>
+            {{- end -}}
+          </a>
+        </li>
+      {{- end -}}
+    </ul>
+  </main>
+{{- end -}}

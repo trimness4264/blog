@@ -1,0 +1,23 @@
+{{- define "main" -}}
+  <main class="notfound-container">
+    <header>
+      <h1>404</h1>
+      <h2>{{ i18n "404.title" }}</h2>
+      <p>{{ i18n "404.desc" | safeHTML }}</p>
+    </header>
+    <nav>
+      <a href="{{ site.Home.RelPermalink }}" class="btn btn-primary">
+        <i aria-hidden="true" class="large-icon i-home"></i>
+        <span>{{ i18n "404.gohome" }}</span>
+      </a>
+      <a href="{{ "archives/" | relLangURL }}" class="btn btn-foreground">
+        <i aria-hidden="true" class="large-icon i-post"></i>
+        <span>{{ i18n "404.posts" }}</span>
+      </a>
+    </nav>
+    <aside class="notfound-quote">
+      <i aria-hidden="true" class="small-icon i-quote"></i>
+      {{- partial "components/random-quote.html" . -}}
+    </aside>
+  </main>
+{{- end -}}

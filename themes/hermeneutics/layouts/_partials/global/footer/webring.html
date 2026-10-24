@@ -1,0 +1,36 @@
+{{- $webrings := hugo.Data.webring.webring -}}
+<ul class="footer-webrings">
+  {{- range $webrings -}}
+    {{- if eq .type "ring" -}}
+      <li>
+        <a
+          href="{{- .prev -}}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="The prev site in webring {{ .text }}"
+        >
+          <i aria-hidden="true" class="i-arrow-left small-icon"></i>
+        </a>
+        <a href="{{- .href -}}" target="_blank" rel="noopener noreferrer"
+          >{{ .text }}</a
+        >
+        <a
+          href="{{- .next -}}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="The next site in webring {{ .text }}"
+        >
+          <i aria-hidden="true" class="i-arrow-right small-icon"></i>
+        </a>
+      </li>
+    {{- else if eq .type "random" -}}
+      <li>
+        <a href="{{- .href -}}" target="_blank" rel="noopener noreferrer"
+          >{{ .text }}</a
+        >
+      </li>
+    {{- else -}}
+      {{- warnf "Unsupported webring type" -}}
+    {{- end -}}
+  {{- end -}}
+</ul>

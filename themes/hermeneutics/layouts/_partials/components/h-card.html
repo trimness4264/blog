@@ -1,0 +1,13 @@
+<div class="h-card p-author hidden" aria-hidden="true">
+  <span class="p-name">{{- site.Params.author.name -}}</span>
+  <link class="u-photo" href="{{- site.Params.author.avatar | absURL -}}" />
+  {{- with site.Params.author.bio -}}
+    <p class="p-note">{{- . -}}</p>
+  {{- end -}}
+  <a class="u-url u-uid" href="{{- site.BaseURL -}}">{{- site.BaseURL -}}</a>
+  {{- with site.Params.author.tags -}}
+    {{- range . -}}
+      <span class="p-category">{{- . -}}</span>
+    {{- end -}}
+  {{- end -}}
+</div>

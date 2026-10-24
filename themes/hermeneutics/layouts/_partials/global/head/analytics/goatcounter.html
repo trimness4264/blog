@@ -1,0 +1,6 @@
+{{- $gcDomain := site.Params.analytics.goatcounter.domain | default "https://gc.zgo.at" -}}
+<script
+  data-goatcounter="{{ $gcDomain }}/count"
+  async
+  src="{{ $gcDomain }}/count.js"
+></script>

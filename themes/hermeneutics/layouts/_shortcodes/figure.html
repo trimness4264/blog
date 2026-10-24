@@ -1,0 +1,110 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- $caption := .Get "caption" | default (.Get "title") -}}
+{{- $widthPct := .Get "width" -}}
+{{- $original := .Page.Resources.GetMatch $src -}}
+{{- $isRaster := false -}}
+{{- if $original -}}
+  {{- if in (slice "jpeg" "png" "gif" "webp" "avif" "tiff" "bmp") $original.MediaType.SubType -}}
+    {{- $isRaster = true -}}
+  {{- end -}}
+{{- end -}}
+<figure>
+  {{- if $isRaster -}}
+    {{- $ow := $original.Width -}}
+    {{- $oh := $original.Height -}}
+
+    {{- $lightboxW := $ow -}}
+    {{- if gt $lightboxW 2000 -}}{{- $lightboxW = 2000 -}}{{- end -}}
+    {{- $lightboxQ := 90 -}}
+    {{- if eq $lightboxW 2000 -}}{{- $lightboxQ = 85 -}}{{- end -}}
+    {{- $lightboxUrl := ($original.Resize (printf "%dx webp q%d" $lightboxW $lightboxQ)).RelPermalink -}}
+
+    {{- $pct := 100 -}}
+    {{- if $widthPct -}}
+      {{- $pct = int $widthPct -}}
+      {{- if gt $pct 100 -}}{{- $pct = 100 -}}{{- end -}}
+      {{- if lt $pct 1 -}}{{- $pct = 1 -}}{{- end -}}
+    {{- end -}}
+
+    {{- $breakpoints := slice
+      (dict "w" 640  "wq" 75 "aq" 60)
+      (dict "w" 960  "wq" 65 "aq" 50)
+      (dict "w" 1600 "wq" 50 "aq" 37)
+    -}}
+
+    {{- $webpParts := slice -}}
+    {{- $avifParts := slice -}}
+    {{- $srcUrl := "" -}}
+    {{- range $i, $bp := $breakpoints -}}
+      {{- $w := int (math.Round (mul (float $bp.w) (div (float $pct) 100.0))) -}}
+      {{- if gt $w $ow -}}{{- $w = $ow -}}{{- end -}}
+      {{- $rw := $original.Resize (printf "%dx webp q%d" $w $bp.wq) -}}
+      {{- $ra := $original.Resize (printf "%dx avif q%d" $w $bp.aq) -}}
+      {{- $webpParts = $webpParts | append (printf "%s %dw" $rw.RelPermalink $w) -}}
+      {{- $avifParts = $avifParts | append (printf "%s %dw" $ra.RelPermalink $w) -}}
+      {{- if eq $i 0 -}}{{- $srcUrl = $rw.RelPermalink -}}{{- end -}}
+    {{- end -}}
+    {{- $srcsetWebp := delimit $webpParts ", " -}}
+    {{- $srcsetAvif := delimit $avifParts ", " -}}
+
+    {{- $finalWidth := int (math.Round (mul (float $ow) (div (float $pct) 100.0))) -}}
+    {{- $finalHeight := int (math.Round (mul (float $finalWidth) (div (float $oh) (float $ow)))) -}}
+
+    {{- $sizes := printf "(max-width: 768px) 95vw, calc(var(--main-width) * %d / 100)" $pct -}}
+
+
+    <a
+      href="{{ $lightboxUrl }}"
+      class="lightbox-link"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Picture: {{ $alt }}"
+    >
+      <picture>
+        <source
+          type="image/avif"
+          srcset="{{ $srcsetAvif }}"
+          sizes="{{ $sizes }}"
+        />
+        <source
+          type="image/webp"
+          srcset="{{ $srcsetWebp }}"
+          sizes="{{ $sizes }}"
+        />
+        <img
+          src="{{ $srcUrl }}"
+          data-src="{{ $lightboxUrl }}"
+          alt="{{ $alt }}"
+          width="{{ $finalWidth }}"
+          height="{{ $finalHeight }}"
+          loading="lazy"
+          decoding="async"
+          {{ with $caption }}title="{{ . | safeHTML }}"{{ end }}
+          style="width: {{ $pct }}%"
+        />
+      </picture>
+    </a>
+  {{- else -}}
+    <a
+      href="{{ $src | safeURL }}"
+      class="lightbox-link"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Picture: {{ $alt }}"
+    >
+      <img
+        src="{{ $src | safeURL }}"
+        data-src="{{ $src | safeURL }}"
+        alt="{{ $alt }}"
+        {{ with $widthPct }}style="width: {{ . }}%"{{ end }}
+        loading="lazy"
+        decoding="async"
+        {{ with $caption }}title="{{ . | safeHTML }}"{{ end }}
+      />
+    </a>
+  {{- end -}}
+  {{- with $caption -}}
+    <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end -}}
+</figure>

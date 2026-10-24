@@ -1,0 +1,9 @@
+{{- with resources.Get "js/init.js" | minify -}}
+<script>{{ .Content | safeJS }}</script>
+{{- end -}}
+{{- $js := resources.Get "js/main.js" | js.Build (dict "minify" true "target" "es2015") | fingerprint -}}
+<script
+  src="{{ $js.RelPermalink }}"
+  integrity="{{ $js.Data.Integrity }}"
+  defer
+></script>

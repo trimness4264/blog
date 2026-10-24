@@ -1,0 +1,218 @@
+// FIXME: some parts cocktailed by language models.
+// I will try to make a more aesthetically correct one.
+
+.chroma {
+  --chroma-bg: var(--herm-muted);
+  --chroma-fg: var(--herm-foreground);
+  --chroma-hl-bg: var(--herm-muted);
+  --chroma-muted: var(--herm-muted-foreground);
+
+  --chroma-keyword: var(--herm-purple);
+  --chroma-function: var(--herm-blue);
+  --chroma-type: var(--herm-cyan);
+  --chroma-string: var(--herm-green);
+  --chroma-number: var(--herm-pink);
+  --chroma-literal: var(--herm-amber);
+  --chroma-error: var(--herm-red);
+  --chroma-diff-add: var(--herm-green);
+
+  color: var(--chroma-fg);
+  background-color: var(--chroma-bg);
+  -webkit-text-size-adjust: none;
+
+  .bg {
+    color: var(--chroma-fg);
+    background-color: var(--chroma-bg);
+  }
+  .hl {
+    background-color: var(--chroma-hl-bg);
+  }
+
+  .lnlinks {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+  }
+  .lntd {
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  .lntable {
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  .line {
+    display: flex;
+  }
+  .lnt,
+  .ln {
+    white-space: pre;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em;
+    color: var(--chroma-muted);
+  }
+
+  /* Errors */
+  .err {
+    color: var(--chroma-error);
+  }
+
+  /* Keywords */
+  .k,
+  .kc,
+  .kd,
+  .kn,
+  .kr {
+    color: var(--chroma-keyword);
+    font-weight: bold;
+  }
+  .kp {
+    color: var(--chroma-keyword);
+  }
+  .kt {
+    color: var(--chroma-type);
+  }
+
+  /* Names (Functions, Classes, Attributes) */
+  .na {
+    color: var(--chroma-literal);
+  } /* Attribute */
+  .nc {
+    color: var(--chroma-type);
+  } /* Class */
+  .no {
+    color: var(--chroma-literal);
+  } /* Constant */
+  .nd {
+    color: var(--chroma-literal);
+  } /* Decorator */
+  .ni {
+    color: var(--chroma-literal);
+  } /* Entity */
+  .ne {
+    color: var(--chroma-error);
+  } /* Exception */
+  .nl {
+    color: var(--chroma-type);
+  } /* Label */
+  .nn {
+    color: var(--chroma-type);
+  } /* Namespace */
+  .py {
+    color: var(--chroma-literal);
+  } /* Property */
+  .nt {
+    color: var(--chroma-keyword);
+  } /* Tag */
+  .nb,
+  .bp {
+    color: var(--chroma-function);
+  } /* Builtin */
+  .nf,
+  .fm {
+    color: var(--chroma-function);
+  } /* Function / Magic */
+
+  /* Strings */
+  .s,
+  .sa,
+  .sb,
+  .sc,
+  .dl,
+  .s2,
+  .sh,
+  .si,
+  .sx,
+  .s1,
+  .ss {
+    color: var(--chroma-string);
+  }
+  .sr {
+    color: var(--chroma-literal);
+  } /* Regex */
+  .se {
+    color: var(--chroma-literal);
+  } /* Escape Char */
+  .sd {
+    color: var(--chroma-muted);
+  } /* Docstring */
+
+  /* Numbers */
+  .m,
+  .mb,
+  .mf,
+  .mh,
+  .mi,
+  .il,
+  .mo {
+    color: var(--chroma-number);
+  }
+
+  /* Operators Punctuation */
+  .o {
+    color: var(--chroma-fg);
+  }
+  .ow {
+    color: var(--chroma-keyword);
+    font-weight: bold;
+  } /* Word Operator */
+  .p {
+    color: var(--chroma-muted);
+  } /* Punctuation (Muted to reduce noise) */
+
+  /* Comments */
+  .c,
+  .ch,
+  .cm,
+  .c1 {
+    color: var(--chroma-muted);
+    font-style: italic;
+  }
+  .cs {
+    color: var(--chroma-muted);
+    font-style: italic;
+    font-weight: bold;
+  }
+  .cp,
+  .cpf {
+    color: var(--chroma-literal);
+    font-style: italic;
+  } /* Preproc */
+
+  /* Generic / Diffs */
+  .gd {
+    color: var(--chroma-error);
+  } /* Deleted */
+  .gr {
+    color: var(--chroma-error);
+  } /* Error */
+  .gt {
+    color: var(--chroma-error);
+  } /* Traceback */
+  .gi {
+    color: var(--chroma-diff-add);
+  } /* Inserted */
+  .ge {
+    font-style: italic;
+  } /* Emph */
+  .gs {
+    font-weight: bold;
+  } /* Strong */
+  .gh {
+    color: var(--chroma-function);
+    font-weight: bold;
+  } /* Heading */
+  .gu {
+    color: var(--chroma-function);
+    font-weight: bold;
+  } /* Subheading */
+  .gp {
+    color: var(--chroma-muted);
+    font-weight: bold;
+  } /* Prompt */
+}

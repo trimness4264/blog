@@ -1,0 +1,129 @@
+@font-face {
+  font-family: "Tangerine";
+  src: url("/vendor/fonts/tangerine.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --herm-shadow-sm:
+    0 2px 4px color-mix(in oklch, var(--herm-foreground) 4%, transparent),
+    0 4px 12px color-mix(in oklch, var(--herm-foreground) 4%, transparent);
+
+  --herm-shadow-md:
+    0 4px 8px color-mix(in oklch, var(--herm-foreground) 6%, transparent),
+    0 8px 24px color-mix(in oklch, var(--herm-foreground) 8%, transparent);
+
+  --herm-shadow-lg:
+    0 12px 24px color-mix(in oklch, var(--herm-foreground) 8%, transparent),
+    0 24px 48px color-mix(in oklch, var(--herm-foreground) 12%, transparent);
+
+  --herm-ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --herm-font-sans-serif:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Noto Sans", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif, "Twitter Color Emoji", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  /* Ideally, we should put ui-serif first.
+   * That way, it respects the user's serif font settings.
+   * Nevertheless, Chromium clearly isn't going to let us have our way.
+   * Google is the worst company in Terra.
+   * */
+  --herm-font-serif:
+    "Source Serif", "Noto Serif", Georgia, Cambria, "Times New Roman", Times,
+    "Liberation Serif", "Source Han Serif SC VF", "Noto Serif CJK SC",
+    "Noto Serif SC", "Songti SC", STSong, SimSun, serif, "Twitter Color Emoji",
+    "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --herm-font-kai:
+    "EB Garamond", "Times New Roman", Times, "Noto Serif", "Source Serif",
+    "Bookerly", "Liberation Serif", "STKaiti", "KaiTi", "楷体", "AR PL UKai CN",
+    var(--herm-font-serif);
+  --herm-font-mono:
+    "JetBrains Mono", "Fira Code", "Cascadia Code", "Source Code Pro",
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+
+  --herm-main-width: min(48rem, 90%);
+  --herm-toc-offset: 8rem;
+
+  --herm-text-xs: 0.75rem; /* 12px */
+  --herm-text-sm: 0.875rem; /* 14px */
+  --herm-text-base: 1rem; /* 16px */
+  --herm-text-lg: 1.125rem; /* 18px */
+  --herm-text-xl: 1.25rem; /* 20px */
+  --herm-text-2xl: 1.5rem; /* 24px */
+  --herm-text-3xl: 1.875rem; /* 30px */
+}
+
+@mixin light-theme {
+  color-scheme: light;
+  --herm-background: oklch(97.64% 0 222.5);
+  --herm-foreground: oklch(38.2% 0.0179 222.5);
+  --herm-primary: oklch(53.5% 0.0906 137.5);
+  --herm-primary-hovered: oklch(38.2% 0.0906 137.5);
+  --herm-muted: oklch(96.56% 0 222.5);
+  --herm-muted-foreground: oklch(53.5% 0.0179 222.5);
+  --herm-border: oklch(89.44% 0 222.5);
+  --herm-pure: #fff;
+
+  --herm-green: var(--herm-primary);
+  --herm-red: oklch(53.5% 0.0906 0);
+  --herm-purple: oklch(53.5% 0.0906 275);
+  --herm-amber: oklch(61.8% 0.0906 52.5);
+  --herm-cyan: oklch(53.5% 0.0906 190);
+  --herm-pink: oklch(53.5% 0.0906 327.5);
+  --herm-blue: oklch(53.5% 0.0906 242.5);
+}
+
+@mixin dark-theme {
+  color-scheme: dark;
+  --herm-background: oklch(23.6% 0 222.5);
+  --herm-foreground: oklch(87.37% 0.0179 222.5);
+  --herm-primary: oklch(61.8% 0.0906 137.5);
+  --herm-primary-hovered: oklch(78.6% 0.0906 137.5);
+  --herm-muted: oklch(27.38% 0.0044 222.5);
+  --herm-muted-foreground: oklch(67.9% 0.0179 222.5);
+  --herm-border: oklch(29% 0 222.5);
+  --herm-pure: #222;
+
+  --herm-red: oklch(61.8% 0.0906 0);
+  --herm-purple: oklch(61.8% 0.0906 275);
+  --herm-cyan: oklch(61.8% 0.0906 190);
+  --herm-pink: oklch(61.8% 0.0906 327.5);
+  --herm-blue: oklch(61.8% 0.0906 242.5);
+
+  --herm-amber: oklch(78.6% 0.0906 52.5);
+}
+
+:root,
+:root[data-theme="light"] {
+  @include light-theme;
+}
+
+:root[data-theme="dark"] {
+  @include dark-theme;
+}
+
+@media (prefers-color-scheme: light) {
+  :root[data-theme="auto"],
+  :root:not([data-theme]) {
+    @include light-theme;
+    &:has(#theme-toggle:checked) {
+      @include dark-theme;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"],
+  :root:not([data-theme]) {
+    @include dark-theme;
+
+    &:has(#theme-toggle:checked) {
+      @include light-theme;
+    }
+  }
+}

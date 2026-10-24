@@ -1,0 +1,20 @@
+{{- if eq .Type "alert" -}}
+  {{- $alertKey := .AlertType | default "note" -}}
+  <div class="alert alert--{{ $alertKey }}" role="status">
+    <header>
+      <i aria-hidden="true" class="i-{{ $alertKey }} medium-icon"></i>
+      <span
+        >{{- with .AlertTitle }}
+          {{ . }}
+        {{ else }}
+          {{ or (i18n $alertKey) (title $alertKey) }}
+        {{ end -}}</span
+      >
+    </header>
+    <div class="alert-content">{{ .Text }}</div>
+  </div>
+{{- else -}}
+  <blockquote>
+    {{ .Text }}
+  </blockquote>
+{{- end -}}
