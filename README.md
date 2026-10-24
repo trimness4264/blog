@@ -16,7 +16,7 @@ bash scripts/hugo.sh --gc --minify
 
 ## Cloudflare Pages
 
-- Build command: `bash scripts/hugo.sh --gc --minify -b "$CF_PAGES_URL"`
+- Build command: `bash scripts/hugo.sh --gc --minify`
 - Build output directory: `public`
 - Environment variables:
   - `HUGO_VERSION=0.163.3`

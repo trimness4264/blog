@@ -4,7 +4,7 @@
     <ul class="header-nav">
       {{- range site.Menus.main -}}
         <li>
-          <a aria-label="Menu {{ .Name }}" href="{{ .URL | absURL }}"
+          <a aria-label="Menu {{ .Name }}" href="{{ .URL | relURL }}"
             >{{ .Name }}</a
           >
         </li>
